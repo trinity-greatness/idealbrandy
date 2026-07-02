@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Ideal Brandy – Premier consultancy and business development firm in Mbale, Uganda. We transform businesses through innovative strategies, digital marketing, branding, and operational excellence."/>
+  <meta name="keywords" content="business consultancy Uganda, digital marketing Mbale, branding strategy, strategic planning, lean process, public relations Uganda, Ideal Brandy"/>
+  <title>Ideal Brandy | Premier Business Consultancy & Development — Mbale, Uganda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STYLES — all CSS lives here. Edit this section to change
+       colours, typography, spacing, and layout.
+  ═══════════════════════════════════════════════════════════ -->
+  <style>
+
+/* ─────────────────────────────────────────────────────
+   IDEAL BRANDY — SINGLE-FILE STYLESHEET
+   Aesthetic: Dark luxury editorial with gold accents
+   ───────────────────────────────────────────────────── */
+
+/* ── RESET & VARIABLES ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:    #0a0804;
+  --dark:     #100e0a;
+  --deep:     #1a1612;
+  --brown:    #2c2018;
+  --gold:     #c9a85c;
+  --gold-lt:  #e2c988;
+  --gold-dk:  #8b6a28;
+  --cream:    #f5ede0;
+  --warm:     #d4b896;
+  --text:     #e8ddd0;
+  --muted:    #8a7a6a;
+  --border:   rgba(201,168,92,0.18);
+  --accent:   #2bcf8d;
+  --accent-soft: rgba(43, 207, 141, 0.16);
+  --wa:       #25D366;
+  --fb:       #1877F2;
+  --tw:       #1DA1F2;
+
+  --font-display: 'Cinzel', serif;
+  --font-body:    'Cormorant Garamond', serif;
+  --font-ui:      'DM Sans', sans-serif;
+
+  --radius:   12px;
+  --shadow:   0 20px 60px rgba(0,0,0,0.5);
+  --glow:     0 0 40px rgba(201,168,92,0.15);
+
+  --nav-h:    72px;
+  --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(201,168,92,0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(43,207,141,0.14), transparent 34%),
+    var(--black);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: none; background: none; border: none; font-family: inherit; }
+input, select, textarea { font-family: var(--font-ui); }
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 2px; }
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+.cursor-follower {
+  width: 28px; height: 28px;
+  border: 1px solid rgba(201,168,92,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s var(--ease), width 0.3s, height 0.3s, background 0.3s;
+}
+.cursor.hovered { transform: translate(-50%, -50%) scale(0); }
+.cursor-follower.hovered {
+  width: 50px; height: 50px;
+  background: rgba(201,168,92,0.08);
+  border-color: var(--gold);
+}
+
+/* ── LOADER ── */
+.loader {
+  position: fixed; inset: 0;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.7s var(--ease), visibility 0.7s;
+}
+.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-inner { text-align: center; }
+.loader-logo {
+  width: 120px; height: 120px;
+  border: 1.5px solid rgba(201,168,92,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 2rem;
+  animation: loaderPulse 1.8s ease-in-out infinite;
+  padding: 6px;
+}
+.loader-logo-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.loader-bar {
+  width: 220px; height: 1.5px;
+  background: rgba(201,168,92,0.15);
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold), var(--gold-lt));
+  animation: loaderFill 2.2s var(--ease) forwards;
+}
+.loader-text {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,92,0.3); border-color: rgba(201,168,92,0.3); }
+  50% { box-shadow: 0 0 0 14px rgba(201,168,92,0); border-color: rgba(201,168,92,0.7); }
+}
+@keyframes loaderFill {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  z-index: 1000;
+  transition: background 0.4s var(--ease), box-shadow 0.4s;
+}
+.nav.scrolled {
+  background: rgba(10,8,4,0.96);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 1px 0 var(--border), var(--glow);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+.nav-logo:hover .nav-logo-img { transform: scale(1.06); opacity: 0.9; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 2.5rem;
+  list-style: none;
+}
+.nav-link {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm);
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease);
+}
+.nav-link:hover { color: var(--gold); }
+.nav-link:hover::after { width: 100%; }
+
+.hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s var(--ease);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0.85rem 1.8rem;
+  transition: all 0.35s var(--ease);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.06);
+  transform: translateX(-100%);
+  transition: transform 0.4s var(--ease);
+}
+.btn:hover::before { transform: translateX(0); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  color: var(--black);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(201,168,92,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,92,0.45); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.btn-nav {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,92,0.4);
+  font-size: 0.78rem;
+  padding: 0.65rem 1.4rem;
+}
+.btn-nav:hover { background: var(--gold); color: var(--black); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.btn-full { width: 100%; justify-content: center; }
+.btn-icon { transition: transform 0.3s var(--spring); }
+.btn:hover .btn-icon { transform: translateX(4px); }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+.section-label.light { color: var(--gold-lt); }
+.section-label.light::before { background: var(--gold-lt); }
+
+.section-title {
+  font-family: var(--font-body);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--cream);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-title.light { color: var(--cream); }
+
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header .section-label { justify-content: center; }
+.section-header .section-label::before { display: none; }
+
+/* ── REVEAL ANIMATIONS ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.3s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+[data-delay="500"] { transition-delay: 0.5s; }
+[data-delay="600"] { transition-delay: 0.6s; }
+[data-delay="700"] { transition-delay: 0.7s; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.hero-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #c9a85c 0%, transparent 70%);
+  top: -150px; right: -100px;
+  opacity: 0.10;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #8b4513 0%, transparent 70%);
+  bottom: 50px; left: -100px;
+  opacity: 0.18;
+  animation: orbFloat 11s ease-in-out infinite reverse;
+}
+.hero-orb-3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  top: 40%; left: 40%;
+  opacity: 0.07;
+  animation: orbFloat 6s ease-in-out infinite;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.35;
+}
+.hero-lines {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,92,0.025) 80px);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  padding-top: var(--nav-h);
+  padding-left: 2rem;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,92,0.25);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  margin-bottom: 2rem;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero-title {
+  font-family: var(--font-body);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  display: flex; flex-direction: column;
+}
+.hero-title-line { display: block; }
+.hero-title .italic { font-style: italic; color: var(--gold); }
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--warm);
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+  max-width: 580px;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  z-index: 2;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(180deg, transparent, var(--gold));
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+}
+
+.hero-badge-floating {
+  position: absolute;
+  right: 8%; top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.hbf-inner {
+  width: 92px; height: 92px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(10,8,4,0.7);
+  backdrop-filter: blur(10px);
+  animation: rotateSlow 16s linear infinite;
+  text-align: center;
+}
+.hbf-year { font-family: var(--font-ui); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.hbf-num  { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); line-height: 1; }
+.hbf-tag  { font-family: var(--font-ui); font-size: 0.55rem; color: var(--warm); letter-spacing: 0.08em; text-transform: uppercase; }
+@keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ── MARQUEE ── */
+.marquee-strip {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--deep);
+  padding: 1rem 0;
+}
+.marquee-track {
+  display: flex; align-items: center; gap: 2.5rem;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.marquee-dot { color: var(--gold) !important; font-size: 0.6rem !important; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-strip:hover .marquee-track { animation-play-state: paused; }
+
+/* ── ABOUT ── */
+.about { padding: 8rem 0; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.about-image-col { position: relative; }
+.about-img-frame { position: relative; aspect-ratio: 4/5; }
+.about-img-inner {
+  width: 100%; height: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--deep);
+}
+.about-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.about-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+.aib-number { font-family: var(--font-display); font-size: 1.8rem; color: var(--black); line-height: 1; }
+.aib-text { font-family: var(--font-ui); font-size: 0.7rem; color: rgba(10,8,4,0.7); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.05em; }
+.about-img-badge {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  border-radius: var(--radius);
+  padding: 1.2rem 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.about-text-col { padding-top: 1rem; }
+.about-body { color: var(--warm); font-size: 1.1rem; margin-bottom: 1.2rem; }
+.about-body strong { color: var(--cream); font-weight: 600; }
+
+.about-stats {
+  display: flex; gap: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.stat { text-align: left; }
+.stat-num { font-family: var(--font-body); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.stat-sym { color: var(--gold); font-size: 1.5rem; vertical-align: super; }
+.stat-label { display: block; font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+
+/* ── SERVICES ── */
+.menu { padding: 8rem 0; position: relative; }
+.menu-bg-accent {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--deep) 20%, var(--deep) 80%, transparent 100%);
+  pointer-events: none;
+}
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.menu-card {
+  background: var(--brown);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  position: relative;
+  transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
+  overflow: hidden;
+}
+.menu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.menu-card:hover { transform: translateY(-6px); border-color: rgba(201,168,92,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow); }
+.menu-card:hover::before { opacity: 1; }
+.menu-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+.menu-card-title { font-family: var(--font-body); font-size: 1.4rem; font-weight: 600; color: var(--cream); margin-bottom: 0.75rem; }
+.menu-card-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+.menu-card-tag { display: inline-block; font-family: var(--font-ui); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,92,0.3); border-radius: 50px; padding: 0.25rem 0.75rem; }
+
+/* ── PROCESS ── */
+.gallery { padding: 8rem 0; }
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.process-step {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--deep);
+  transition: border-color 0.35s, transform 0.35s var(--ease);
+}
+.process-step:hover { border-color: rgba(201,168,92,0.3); transform: translateY(-4px); }
+.ps-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold-dk);
+  opacity: 0.6;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.ps-body h3 { font-family: var(--font-body); font-size: 1.3rem; color: var(--cream); margin-bottom: 0.5rem; font-weight: 600; }
+.ps-body p { color: var(--muted); font-size: 0.98rem; line-height: 1.7; }
+
+.mission-callout {
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mission-callout::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,92,0.05) 0%, transparent 70%);
+}
+.mc-inner { position: relative; z-index: 1; }
+.mc-icon { font-size: 1.5rem; color: var(--gold); display: block; margin-bottom: 1.5rem; }
+.mission-callout blockquote {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.mc-author { font-family: var(--font-ui); font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+
+/* ── PARTNERS ── */
+.partners-section { padding: 7rem 0; }
+.partners-sub { text-align: center; color: var(--warm); font-size: 1.05rem; margin-bottom: 3rem; }
+.partners-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin: 0 auto 2rem; max-width: 860px; }
+.partner-slot {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(43,207,141,0.08));
+}
+.partner-slot:hover { border-color: rgba(201,168,92,0.4); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.3), var(--glow); }
+.partner-inner { aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.partner-inner img { max-width: 100%; max-height: 150px; object-fit: contain; filter: grayscale(30%) brightness(1.1); transition: filter 0.3s; }
+.partner-slot:hover .partner-inner img { filter: grayscale(0%) brightness(1.2); }
+.partner-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--muted); }
+.partner-meta { padding: 0 1.5rem 1.5rem; }
+.partner-meta h3 { font-family: var(--font-body); font-size: 1.2rem; color: var(--cream); margin-bottom: 0.35rem; }
+.partner-meta p { font-family: var(--font-ui); font-size: 0.9rem; color: var(--warm); line-height: 1.6; }
+.pp-icon { font-size: 2rem; }
+.pp-label { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.partners-note { text-align: center; font-family: var(--font-ui); font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+.partners-note code { background: var(--brown); color: var(--gold); padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.75rem; }
+
+/* ── BLOG ── */
+.blog-section { padding: 7rem 0; position: relative; }
+.blog-bg-accent {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--deep) 15%, var(--deep) 85%, transparent 100%);
+  pointer-events: none;
+}
+.blog-sub { text-align: center; color: var(--warm); font-size: 1.05rem; margin-bottom: 3rem; }
+.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+.blog-card {
+  background: var(--brown);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s;
+  position: relative;
+}
+.blog-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.blog-card:hover { transform: translateY(-6px); border-color: rgba(201,168,92,0.35); box-shadow: 0 20px 45px rgba(0,0,0,0.4), var(--glow); }
+.blog-card:hover::before { opacity: 1; }
+.blog-card-img { position: relative; aspect-ratio: 16/8; overflow: hidden; }
+.blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.blog-card:hover .blog-card-img img { transform: scale(1.05); }
+.blog-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.bip-1 { background: linear-gradient(135deg, #1a1200, #2a1f08); }
+.bip-2 { background: linear-gradient(135deg, #0d1a0d, #1a2a1a); }
+.bip-3 { background: linear-gradient(135deg, #0d0d1a, #1a1a2a); }
+.bip-4 { background: linear-gradient(135deg, #1a0d0d, #2a1a1a); }
+.blog-category-badge { position: absolute; top: 0.75rem; left: 0.75rem; background: var(--gold); color: var(--black); font-family: var(--font-ui); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 50px; }
+.blog-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; gap: 0.75rem; }
+.blog-meta { display: flex; gap: 1rem; align-items: center; }
+.blog-date, .blog-read { font-family: var(--font-ui); font-size: 0.72rem; color: var(--muted); }
+.blog-title { font-family: var(--font-body); font-size: 1.25rem; font-weight: 600; color: var(--cream); line-height: 1.35; }
+.blog-excerpt { font-size: 0.95rem; color: var(--muted); line-height: 1.7; flex: 1; }
+.blog-read-more { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-ui); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-top: auto; transition: gap 0.3s var(--spring), color 0.3s; }
+.blog-read-more:hover { gap: 0.8rem; color: var(--gold-lt); }
+.brm-arrow { transition: transform 0.3s var(--spring); }
+.blog-read-more:hover .brm-arrow { transform: translateX(4px); }
+.featured-post { grid-column: 1 / -1; flex-direction: row; }
+.featured-post .blog-card-img { width: 45%; aspect-ratio: auto; flex-shrink: 0; }
+.featured-post .blog-card-body { padding: 2rem; }
+.featured-post .blog-title { font-size: 1.5rem; }
+.blog-update-note { background: var(--deep); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+.bun-inner { display: flex; gap: 1rem; align-items: flex-start; }
+.bun-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.bun-inner strong { display: block; font-family: var(--font-ui); font-size: 0.82rem; color: var(--gold); margin-bottom: 0.3rem; }
+.bun-inner p { font-family: var(--font-ui); font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.bun-inner code { background: var(--brown); color: var(--gold-lt); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.75rem; }
+.blog-cta { text-align: center; margin-top: 1rem; }
+
+/* ── MEDIA GALLERY ── */
+.media-section { padding: 7rem 0; }
+.media-sub { text-align: center; color: var(--warm); font-size: 1.05rem; margin-bottom: 2rem; }
+.media-tabs { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.media-tab {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--deep);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.5rem 1.25rem;
+  cursor: none;
+  transition: all 0.3s var(--ease);
+}
+.media-tab:hover { color: var(--cream); border-color: rgba(201,168,92,0.3); }
+.media-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); font-weight: 500; }
+.media-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 1rem; margin-bottom: 2rem; }
+.media-item {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  background: var(--deep);
+  border: 1px solid var(--border);
+  transition: transform 0.35s var(--ease), border-color 0.35s;
+}
+.media-item.mi-large { grid-column: span 2; grid-row: span 2; }
+.media-item.mi-wide  { grid-column: span 2; }
+.media-item:hover { transform: scale(1.02); border-color: rgba(201,168,92,0.35); z-index: 2; }
+.media-item.hidden { display: none; }
+.media-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; }
+.mp-1 { background: linear-gradient(135deg, #1a1200, #2a1f08); }
+.mp-2 { background: linear-gradient(135deg, #0d1a0d, #162616); }
+.mp-3 { background: linear-gradient(135deg, #0d0d1a, #141426); }
+.mp-4 { background: linear-gradient(135deg, #1a0d0d, #261616); }
+.mp-5 { background: linear-gradient(135deg, #1a1a0d, #282814); }
+.mp-6 { background: linear-gradient(135deg, #0d1a1a, #142626); }
+.mp-icon { font-size: 2rem; }
+.media-placeholder p { font-family: var(--font-ui); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.media-item img, .media-item video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s var(--ease); }
+.media-item:hover img, .media-item:hover video { transform: scale(1.05); }
+.media-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,8,4,0.92) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; opacity: 0; transition: opacity 0.4s var(--ease); }
+.media-item:hover .media-overlay { opacity: 1; }
+.mo-label { font-family: var(--font-body); font-size: 1rem; color: var(--cream); display: block; margin-bottom: 0.2rem; }
+.mo-type  { font-family: var(--font-ui); font-size: 0.68rem; color: var(--gold); letter-spacing: 0.1em; }
+
+/* ── BOOKING ── */
+.booking { padding: 8rem 0; position: relative; overflow: hidden; }
+.booking-bg { position: absolute; inset: 0; background: var(--deep); }
+.booking-orb { position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,168,92,0.09) 0%, transparent 65%); top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; }
+.booking-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+.booking-sub { color: var(--warm); font-size: 1.05rem; margin: 1.2rem 0 2.5rem; }
+.booking-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.bi-item { display: flex; gap: 1rem; align-items: flex-start; }
+.bi-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+.bi-item strong { display: block; font-family: var(--font-ui); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+.bi-item p, .bi-item a { color: var(--warm); font-size: 1rem; transition: color 0.3s; }
+.bi-item a:hover { color: var(--gold); }
+
+.booking-form-wrap { background: var(--brown); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; box-shadow: var(--shadow); }
+.form-title { font-family: var(--font-body); font-size: 1.6rem; font-weight: 300; color: var(--cream); margin-bottom: 1.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--cream);
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,92,0.12); }
+.form-group select option { background: var(--dark); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-success { display: none; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; padding: 1.5rem; margin-top: 1rem; background: rgba(201,168,92,0.08); border: 1px solid rgba(201,168,92,0.3); border-radius: 8px; color: var(--gold-lt); font-family: var(--font-ui); font-size: 0.9rem; }
+.form-success.show { display: flex; animation: fadeIn 0.5s var(--ease); }
+.form-success span { font-size: 2rem; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── SOCIAL ── */
+.social-section { padding: 8rem 0; }
+.social-sub { text-align: center; color: var(--warm); font-size: 1.1rem; margin-bottom: 3rem; }
+.social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 900px; margin: 0 auto; }
+.social-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--deep); transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
+.social-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; }
+.sc-whatsapp::before { background: linear-gradient(135deg, rgba(37,211,102,0.1), transparent); }
+.sc-facebook::before { background: linear-gradient(135deg, rgba(24,119,242,0.1), transparent); }
+.sc-twitter::before  { background: linear-gradient(135deg, rgba(29,161,242,0.1), transparent); }
+.sc-call::before     { background: linear-gradient(135deg, rgba(201,168,92,0.15), transparent); }
+.social-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+.social-card:hover::before { opacity: 1; }
+.sc-whatsapp:hover { border-color: rgba(37,211,102,0.4); }
+.sc-facebook:hover { border-color: rgba(24,119,242,0.4); }
+.sc-twitter:hover  { border-color: rgba(29,161,242,0.4); }
+.sc-call:hover     { border-color: rgba(201,168,92,0.4); }
+.sc-icon-wrap { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.3s var(--spring); }
+.social-card:hover .sc-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+.sc-whatsapp .sc-icon-wrap { background: rgba(37,211,102,0.15); color: var(--wa); }
+.sc-facebook .sc-icon-wrap { background: rgba(24,119,242,0.15); color: var(--fb); }
+.sc-twitter  .sc-icon-wrap { background: rgba(29,161,242,0.15); color: var(--tw); }
+.sc-call     .sc-icon-wrap { background: rgba(201,168,92,0.15); color: var(--gold); }
+.sc-icon { width: 24px; height: 24px; }
+.sc-text { flex: 1; }
+.sc-name { display: block; font-family: var(--font-ui); font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 0.2rem; }
+.sc-handle { font-family: var(--font-ui); font-size: 0.78rem; color: var(--muted); }
+.sc-arrow { font-size: 1.1rem; color: var(--muted); transition: transform 0.3s var(--spring), color 0.3s; }
+.social-card:hover .sc-arrow { transform: translate(4px, -4px); color: var(--gold); }
+
+/* ── MAP ── */
+.map-section { padding: 5rem 0; }
+.map-inner { display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; align-items: center; background: var(--deep); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; padding: 2.5rem; }
+.map-text h3 { font-family: var(--font-body); font-size: 1.8rem; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+.map-text p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.map-embed iframe { border-radius: 8px; filter: grayscale(20%) contrast(1.05); }
+
+/* ── FOOTER ── */
+.footer { background: var(--dark); border-top: 1px solid var(--border); padding: 4rem 0 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+.footer-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.footer-logo-img { height: 80px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(201,168,92,0.2)); }
+.footer-tagline { color: var(--muted); font-size: 1rem; font-style: italic; margin-bottom: 0.5rem; }
+.footer-address { color: var(--muted); font-family: var(--font-ui); font-size: 0.85rem; }
+.footer-links h4, .footer-contact h4 { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { font-family: var(--font-ui); font-size: 0.88rem; color: var(--muted); transition: color 0.3s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-contact p { margin-bottom: 0.5rem; }
+.footer-contact a { color: var(--warm); font-family: var(--font-ui); font-size: 0.95rem; transition: color 0.3s; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-socials { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+.fs-btn { width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.3s var(--ease); }
+.fs-wa:hover { border-color: var(--wa); color: var(--wa); background: rgba(37,211,102,0.1); }
+.fs-fb:hover { border-color: var(--fb); color: var(--fb); background: rgba(24,119,242,0.1); }
+.fs-tw:hover { border-color: var(--tw); color: var(--tw); background: rgba(29,161,242,0.1); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-ui); font-size: 0.78rem; color: var(--muted); flex-wrap: wrap; gap: 0.5rem; }
+.footer-bottom a { color: var(--gold); transition: color 0.3s; }
+.footer-bottom a:hover { color: var(--gold-lt); }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.3s var(--spring), box-shadow 0.3s; }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+.wa-float-tooltip { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%); background: var(--dark); color: var(--cream); font-family: var(--font-ui); font-size: 0.75rem; white-space: nowrap; padding: 0.4rem 0.9rem; border-radius: 6px; border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.wa-float:hover .wa-float-tooltip { opacity: 1; }
+.wa-float::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: waPulse 2s ease-in-out infinite; }
+@keyframes waPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.25); opacity: 0; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-image-col { max-width: 480px; margin: 0 auto; }
+  .booking-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .map-inner { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.mobile-open {
+    display: flex; flex-direction: column;
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: rgba(10,8,4,0.97);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .btn-nav { display: none; }
+  .hamburger { display: flex; }
+  .hero-content { padding-left: 0; }
+  .hero-badge-floating { display: none; }
+  .menu-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .social-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-scroll { display: none; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid { grid-template-columns: 1fr; }
+  .featured-post { flex-direction: column; }
+  .featured-post .blog-card-img { width: 100%; aspect-ratio: 16/8; }
+  .media-grid { grid-template-columns: repeat(2, 1fr); }
+  .media-item.mi-large { grid-column: span 2; }
+}
+
+@media (max-width: 540px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .about-stats { flex-direction: column; gap: 1.25rem; }
+  .hero-title { font-size: clamp(2.8rem, 10vw, 5rem); }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .media-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 140px; }
+  .media-item.mi-large, .media-item.mi-wide { grid-column: span 2; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rippleAnim { to { transform: scale(1); opacity: 0; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── CURSOR ─── -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ─── LOADER ─── -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">
+        <img src="logo.png" alt="Ideal Brandy" class="loader-logo-img"/>
+      </div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <p class="loader-text">Building Your Future…</p>
+    </div>
+  </div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="Ideal Brandy Logo" class="nav-logo-img"/>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#partners" class="nav-link">Partners</a></li>
+      <li><a href="#blog"     class="nav-link">Blog</a></li>
+      <li><a href="#media"    class="nav-link">Media</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#booking" class="btn btn-nav">Book a Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-grain"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" data-reveal>
+        <span class="badge-dot"></span>
+        Premier Consultancy · Mbale, Uganda
+      </div>
+      <h1 class="hero-title" data-reveal>
+        <span class="hero-title-line">Transform Your</span>
+        <span class="hero-title-line italic">Business Today</span>
+      </h1>
+      <p class="hero-subtitle" data-reveal>
+        Ideal Brandy helps ambitious businesses in Uganda turn ideas into clear strategy,
+        stronger brands, and measurable growth with a grounded, practical approach.
+      </p>
+      <div class="hero-actions" data-reveal>
+        <a href="#booking" class="btn btn-primary">
+          <span class="btn-text">Book a Consultation</span>
+          <span class="btn-icon">→</span>
+        </a>
+        <a href="#services" class="btn btn-ghost">
+          <span class="btn-text">Our Services</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll" data-reveal>
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+    <div class="hero-badge-floating" data-reveal>
+      <div class="hbf-inner">
+        <span class="hbf-year">Est.</span>
+        <span class="hbf-num">2020</span>
+        <span class="hbf-tag">Trusted</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Business Consultancy</span><span class="marquee-dot">✦</span>
+      <span>Digital Marketing</span><span class="marquee-dot">✦</span>
+      <span>Brand Strategy</span><span class="marquee-dot">✦</span>
+      <span>Strategic Planning</span><span class="marquee-dot">✦</span>
+      <span>Lean Process</span><span class="marquee-dot">✦</span>
+      <span>Public Relations</span><span class="marquee-dot">✦</span>
+      <span>Business Training</span><span class="marquee-dot">✦</span>
+      <span>Market Leadership</span><span class="marquee-dot">✦</span>
+      <span>Business Consultancy</span><span class="marquee-dot">✦</span>
+      <span>Digital Marketing</span><span class="marquee-dot">✦</span>
+      <span>Brand Strategy</span><span class="marquee-dot">✦</span>
+      <span>Strategic Planning</span><span class="marquee-dot">✦</span>
+      <span>Lean Process</span><span class="marquee-dot">✦</span>
+      <span>Public Relations</span><span class="marquee-dot">✦</span>
+      <span>Business Training</span><span class="marquee-dot">✦</span>
+      <span>Market Leadership</span><span class="marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-image-col" data-reveal>
+          <div class="about-img-frame">
+            <div class="about-img-inner">
+              <div class="about-img-placeholder">
+                <img src="images/tri1.jpg" alt="Ideal Brandy Team"/>
+              </div>
+            </div>
+            <div class="about-img-badge">
+              <span class="aib-number">100%</span>
+              <span class="aib-text">Client<br/>Focused</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text-col">
+          <p class="section-label" data-reveal>Who We Are</p>
+          <h2 class="section-title" data-reveal>
+            More Than Consultants.<br/><em>Your Growth Partners.</em>
+          </h2>
+          <p class="about-body" data-reveal>
+            <strong>Ideal Brandy</strong> is a trusted consultancy and business development firm
+            rooted in Mbale, Uganda. We work closely with founders, leaders, and growing teams
+            who want more than advice — they want clarity, momentum, and results they can feel.
+          </p>
+          <p class="about-body" data-reveal>
+            Our mission is to help businesses sharpen their identity, strengthen their systems,
+            and grow with confidence. From first strategy conversations to implementation on the ground,
+            we bring sincerity, discipline, and care to every engagement.
+          </p>
+          <div class="about-stats" data-reveal>
+            <div class="stat">
+              <span class="stat-num" data-count="150">0</span><span class="stat-sym">+</span>
+              <span class="stat-label">Clients Served</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-count="7">0</span>
+              <span class="stat-label">Core Specialisms</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-count="98">0</span><span class="stat-sym">%</span>
+              <span class="stat-label">Client Satisfaction</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section class="menu" id="services">
+    <div class="menu-bg-accent"></div>
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Our Core <em>Services</em></h2>
+      </div>
+      <div class="menu-grid">
+
+        <div class="menu-card" data-reveal data-delay="0">
+          <div class="menu-card-icon">📊</div>
+          <h3 class="menu-card-title">Business Consultancy</h3>
+          <p class="menu-card-desc">We diagnose business challenges and prescribe strategic solutions that unlock growth, streamline operations, and build sustainable competitive advantage.</p>
+          <span class="menu-card-tag">Core Service</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="100">
+          <div class="menu-card-icon">📱</div>
+          <h3 class="menu-card-title">Digital Marketing</h3>
+          <p class="menu-card-desc">From SEO to social media campaigns, we build data-driven digital marketing ecosystems that attract, engage, and convert your target audience at scale.</p>
+          <span class="menu-card-tag">High Demand</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="200">
+          <div class="menu-card-icon">🎯</div>
+          <h3 class="menu-card-title">Branding</h3>
+          <p class="menu-card-desc">We craft compelling brand identities — visual language, positioning, and messaging — that resonate deeply with your audience and set you apart in the market.</p>
+          <span class="menu-card-tag">Transformative</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="300">
+          <div class="menu-card-icon">🗺️</div>
+          <h3 class="menu-card-title">Strategic Planning</h3>
+          <p class="menu-card-desc">We work with leadership teams to develop clear, actionable roadmaps aligned with your vision — turning ambition into structured, measurable plans for growth.</p>
+          <span class="menu-card-tag">Executive Level</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="400">
+          <div class="menu-card-icon">🎓</div>
+          <h3 class="menu-card-title">Training &amp; Development</h3>
+          <p class="menu-card-desc">We deliver bespoke training programmes that upskill teams, build leadership capability, and foster a culture of continuous improvement across your organisation.</p>
+          <span class="menu-card-tag">Capacity Building</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="500">
+          <div class="menu-card-icon">⚙️</div>
+          <h3 class="menu-card-title">Lean Process Implementation</h3>
+          <p class="menu-card-desc">We eliminate waste, reduce costs, and boost efficiency by implementing lean methodologies tailored to your operations — driving excellence from the inside out.</p>
+          <span class="menu-card-tag">Operational</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="600">
+          <div class="menu-card-icon">📣</div>
+          <h3 class="menu-card-title">Public Relations</h3>
+          <p class="menu-card-desc">We manage your reputation, build media relationships, and craft narratives that position your brand as a trusted authority in your industry and community.</p>
+          <span class="menu-card-tag">Reputation</span>
+        </div>
+
+        <div class="menu-card" data-reveal data-delay="700">
+          <div class="menu-card-icon">🚀</div>
+          <h3 class="menu-card-title">Business Development</h3>
+          <p class="menu-card-desc">We identify new market opportunities, forge strategic partnerships, and build revenue pipelines that accelerate your business's expansion and long-term profitability.</p>
+          <span class="menu-card-tag">Growth</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ─── -->
+  <section class="gallery" id="process">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-title">How We Drive <em>Results</em></h2>
+      </div>
+
+      <div class="process-grid" data-reveal>
+        <div class="process-step">
+          <div class="ps-number">01</div>
+          <div class="ps-body">
+            <h3>Discovery &amp; Diagnosis</h3>
+            <p>We begin with a deep-dive into your business — understanding your goals, challenges, market position, and competitive landscape before proposing a single solution.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-number">02</div>
+          <div class="ps-body">
+            <h3>Strategy Design</h3>
+            <p>Our experts design a bespoke strategy aligned to your unique context — combining industry best practices with innovative thinking tailored specifically to your business.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-number">03</div>
+          <div class="ps-body">
+            <h3>Execution &amp; Implementation</h3>
+            <p>We don't just advise — we roll up our sleeves and work alongside your team to implement solutions with precision, accountability, and speed.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-number">04</div>
+          <div class="ps-body">
+            <h3>Measure &amp; Optimise</h3>
+            <p>Every engagement is tracked against clear KPIs. We continuously analyse performance, refine our approach, and ensure you are always moving toward measurable growth.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-callout" data-reveal>
+        <div class="mc-inner">
+          <span class="mc-icon">✦</span>
+          <blockquote>
+            "Our mission is to empower businesses to achieve operational excellence and market leadership — ensuring measurable growth and lasting impact in a competitive environment."
+          </blockquote>
+          <span class="mc-author">— Ideal Brandy, Mbale</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PARTNERS ─── -->
+  <section class="partners-section" id="partners">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Trusted By</p>
+        <h2 class="section-title">Our <em>Partners</em> &amp; Clients</h2>
+      </div>
+      <p class="partners-sub" data-reveal>We are proud to collaborate with organisations that value integrity, growth, and lasting impact.</p>
+
+      <div class="partners-grid" data-reveal>
+
+        <div class="partner-slot">
+          <div class="partner-inner">
+            <div class="partner-placeholder">
+              <img src="partners/Noja technogies.png" alt="Noja Technologies"/>
+            </div>
+          </div>
+          <div class="partner-meta">
+            <h3>Noja Technologies</h3>
+            <p>Innovation-led technology partner supporting practical digital growth.</p>
+          </div>
+        </div>
+
+        <div class="partner-slot">
+          <div class="partner-inner">
+            <div class="partner-placeholder">
+              <img src="partners/tygre.png" alt="Trinity Greatness Foundation"/>
+            </div>
+          </div>
+          <div class="partner-meta">
+            <h3>Trinity Greatness Foundation</h3>
+            <p>Community-anchored development collaborator focused on empowerment and progress.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="partners-note" data-reveal>
+        We are growing this network with intention. More partners will be added as our work expands.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── BLOG ─── -->
+  <section class="blog-section" id="blog">
+    <div class="blog-bg-accent"></div>
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Insights &amp; Ideas</p>
+        <h2 class="section-title">From the <em>Blog</em></h2>
+      </div>
+      <p class="blog-sub" data-reveal>Practical business insights, strategy tips, and growth stories — updated regularly by the Ideal Brandy team.</p>
+
+      <!-- ════════════════════════════════════════════════════
+           BLOG GRID — To add a new post, copy one
+           <article class="blog-card">…</article> block,
+           paste it before the closing </div> of .blog-grid,
+           and update the title, excerpt, date, category,
+           and image src. The first post is a "featured"
+           wide post (class="featured-post") — keep only one.
+      ════════════════════════════════════════════════════ -->
+      <div class="blog-grid">
+
+        <!-- Featured post -->
+        <article class="blog-card featured-post" data-reveal data-delay="0">
+          <div class="blog-card-img">
+            <img src="media/office.jpg" alt="Business strategy and growth planning" />
+            <span class="blog-category-badge">Strategy</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span class="blog-date">📅 June 2024</span>
+              <span class="blog-read">5 min read</span>
+            </div>
+            <h3 class="blog-title">5 Strategies to Accelerate Business Growth in Uganda's Competitive Market</h3>
+            <p class="blog-excerpt">Discover the practical frameworks Ideal Brandy uses to help businesses spot opportunity, build resilience, and grow with confidence in a fast-changing market.</p>
+            <a href="blog/strategy-growth.html" class="blog-read-more"><span>Read Article</span><span class="brm-arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="blog-card" data-reveal data-delay="100">
+          <div class="blog-card-img">
+            <img src="media/corp.jpg" alt="Corporate branding and professional presentation" />
+            <span class="blog-category-badge">Branding</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span class="blog-date">📅 May 2024</span>
+              <span class="blog-read">4 min read</span>
+            </div>
+            <h3 class="blog-title">Why Your Brand is Your Most Valuable Business Asset</h3>
+            <p class="blog-excerpt">A strong brand does more than attract attention — it creates trust, sharpens positioning, and turns attention into lasting loyalty.</p>
+            <a href="blog/brand-asset.html" class="blog-read-more"><span>Read Article</span><span class="brm-arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="blog-card" data-reveal data-delay="200">
+          <div class="blog-card-img">
+            <img src="media/speakup.jpg" alt="Digital communication and public speaking" />
+            <span class="blog-category-badge">Digital</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span class="blog-date">📅 April 2024</span>
+              <span class="blog-read">6 min read</span>
+            </div>
+            <h3 class="blog-title">Digital Marketing in 2024: What East African Businesses Need to Know</h3>
+            <p class="blog-excerpt">The digital space is changing quickly. Here are the habits, platforms, and strategies that help East African businesses stand out without losing authenticity.</p>
+            <a href="blog/digital-marketing-east-africa.html" class="blog-read-more"><span>Read Article</span><span class="brm-arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="blog-card" data-reveal data-delay="300">
+          <div class="blog-card-img">
+            <img src="media/training -team building.jpg" alt="Team training and operational efficiency" />
+            <span class="blog-category-badge">Operations</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta">
+              <span class="blog-date">📅 March 2024</span>
+              <span class="blog-read">5 min read</span>
+            </div>
+            <h3 class="blog-title">Lean Thinking: How to Cut Waste and Double Your Productivity</h3>
+            <p class="blog-excerpt">Lean thinking is not only for factories. It is a practical way for modern teams to simplify work, reduce waste, and grow sustainably.</p>
+            <a href="blog/lean-thinking.html" class="blog-read-more"><span>Read Article</span><span class="brm-arrow">→</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="blog-cta" data-reveal>
+        <a href="#contact" class="btn btn-ghost">
+          <span class="btn-text">Subscribe to Our Newsletter</span>
+          <span class="btn-icon">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── MEDIA GALLERY ─── -->
+  <section class="media-section" id="media">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Photos &amp; Videos</p>
+        <h2 class="section-title">Media <em>Gallery</em></h2>
+      </div>
+      <p class="media-sub" data-reveal>Behind the scenes, events, client engagements, and team moments — our story in pictures.</p>
+
+      <div class="media-tabs" data-reveal>
+        <button class="media-tab active" data-filter="all">All</button>
+        <button class="media-tab" data-filter="events">Events</button>
+        <button class="media-tab" data-filter="team">Team</button>
+        <button class="media-tab" data-filter="clients">Clients</button>
+        <button class="media-tab" data-filter="training">Training</button>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════
+           MEDIA GRID — To add images/videos:
+           Replace .media-placeholder with:
+           <img src="media/photo.jpg" alt="Description"/>
+           or
+           <video src="media/video.mp4" controls poster="media/thumb.jpg"></video>
+           
+           Size modifiers:
+           mi-large  = 2×2 (big feature image)
+           mi-wide   = 2×1 (wide panoramic)
+           (none)    = 1×1 (standard square)
+      ════════════════════════════════════════════════════ -->
+      <div class="media-grid" id="mediaGrid" data-reveal>
+
+        <div class="media-item mi-large" data-category="events">
+          <img src="media/corp.jpg" alt="Corporate Engagement"/>
+          <div class="media-overlay">
+            <span class="mo-label">Corporate Engagement &amp; Events</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="team">
+          <img src="media/team1.jpg" alt="Our Team"/>
+          <div class="media-overlay">
+            <span class="mo-label">Our Team</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="training">
+          <img src="media/training -team building.jpg" alt="Training Session"/>
+          <div class="media-overlay">
+            <span class="mo-label">Leadership Workshop</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item mi-wide" data-category="clients">
+          <img src="media/client engament.jpg" alt="Client Engagement"/>
+          <div class="media-overlay">
+            <span class="mo-label">Client Strategy Session</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="events">
+          <img src="media/spik gold.jpg" alt="Speaking Engagement"/>
+          <div class="media-overlay">
+            <span class="mo-label">Business Summit 2024</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="team">
+          <img src="media/office.jpg" alt="Our Office"/>
+          <div class="media-overlay">
+            <span class="mo-label">Our Office, Mbale</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="training">
+          <img src="media/workshop - sme.jpg" alt="SME Workshop"/>
+          <div class="media-overlay">
+            <span class="mo-label">SME Training Day</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+        <div class="media-item" data-category="clients">
+          <img src="media/award.png" alt="Excellence Award"/>
+          <div class="media-overlay">
+            <span class="mo-label">Excellence Award 2024</span>
+            <span class="mo-type">📷 Photo</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CONSULTATION BOOKING ─── -->
+  <section class="booking" id="booking">
+    <div class="booking-bg">
+      <div class="booking-orb"></div>
+    </div>
+    <div class="container">
+      <div class="booking-inner">
+
+        <div class="booking-text" data-reveal>
+          <p class="section-label light">Get Started</p>
+          <h2 class="section-title light">Book Your Free<br/><em>Consultation</em></h2>
+          <p class="booking-sub">Take the first step toward transforming your business. Reach out and let's explore what's possible together.</p>
+          <div class="booking-info">
+            <div class="bi-item">
+              <span class="bi-icon">📍</span>
+              <div>
+                <strong>Office Location</strong>
+                <p>Kumi Road, Mbale, Uganda</p>
+              </div>
+            </div>
+            <div class="bi-item">
+              <span class="bi-icon">📞</span>
+              <div>
+                <strong>Call or WhatsApp</strong>
+                <p><a href="tel:+256742955780">+256 742 955780</a></p>
+              </div>
+            </div>
+            <div class="bi-item">
+              <span class="bi-icon">🌐</span>
+              <div>
+                <strong>Website</strong>
+                <p><a href="https://idealbrandy.co" target="_blank">idealbrandy.co</a></p>
+              </div>
+            </div>
+            <div class="bi-item">
+              <span class="bi-icon">🕐</span>
+              <div>
+                <strong>Working Hours</strong>
+                <p>Mon – Fri: 8:00 AM – 6:00 PM<br/>Sat: 9:00 AM – 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-form-wrap" data-reveal>
+          <form class="booking-form" id="bookingForm" novalidate>
+            <h3 class="form-title">Request a Consultation</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Your full name" required/>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone / WhatsApp</label>
+                <input type="tel" id="phone" name="phone" placeholder="+256 700 000 000" required/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com"/>
+              </div>
+              <div class="form-group">
+                <label for="company">Business / Organisation</label>
+                <input type="text" id="company" name="company" placeholder="Your business name"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="service">Service of Interest</label>
+                <select id="service" name="service">
+                  <option value="">Select a service</option>
+                  <option value="consultancy">Business Consultancy</option>
+                  <option value="digital">Digital Marketing</option>
+                  <option value="branding">Branding</option>
+                  <option value="strategy">Strategic Planning</option>
+                  <option value="training">Training &amp; Development</option>
+                  <option value="lean">Lean Process Implementation</option>
+                  <option value="pr">Public Relations</option>
+                  <option value="bizdev">Business Development</option>
+                  <option value="multiple">Multiple Services</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date"/>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="notes">Tell Us About Your Business Challenge</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="Briefly describe what you'd like to achieve or the challenge you're facing…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <span class="btn-text">Send Consultation Request</span>
+              <span class="btn-icon">✦</span>
+            </button>
+            <div class="form-success" id="formSuccess">
+              <span>💼</span>
+              <p>Your consultation request has been sent! Our team will reach out via WhatsApp or phone within 24 hours.</p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONNECT / SOCIAL ─── -->
+  <section class="social-section" id="contact">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Connect With Us</p>
+        <h2 class="section-title">Reach Us <em>Anywhere</em></h2>
+      </div>
+      <p class="social-sub" data-reveal>Follow our work, send a message, or call us directly — we're always ready to help your business grow.</p>
+
+      <div class="social-grid" data-reveal>
+
+        <a href="https://wa.me/256742955780?text=Hello%20Ideal%20Brandy!%20I%27d%20like%20to%20book%20a%20free%20consultation."
+           target="_blank" rel="noopener" class="social-card sc-whatsapp">
+          <div class="sc-icon-wrap">
+            <svg class="sc-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.132.558 4.13 1.535 5.858L.057 23.5l5.784-1.517A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.663-.493-5.195-1.357l-.372-.221-3.435.9.92-3.35-.243-.387A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+          </div>
+          <div class="sc-text">
+            <span class="sc-name">WhatsApp</span>
+            <span class="sc-handle">Chat with us directly</span>
+          </div>
+          <span class="sc-arrow">↗</span>
+        </a>
+
+        <a href="https://www.facebook.com/search/top?q=Ideal%20Brandy%20Mbale"
+           target="_blank" rel="noopener" class="social-card sc-facebook">
+          <div class="sc-icon-wrap">
+            <svg class="sc-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.532-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+            </svg>
+          </div>
+          <div class="sc-text">
+            <span class="sc-name">Facebook</span>
+            <span class="sc-handle">Like &amp; Follow Our Page</span>
+          </div>
+          <span class="sc-arrow">↗</span>
+        </a>
+
+        <a href="https://twitter.com/search?q=IdealBrandy"
+           target="_blank" rel="noopener" class="social-card sc-twitter">
+          <div class="sc-icon-wrap">
+            <svg class="sc-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+          <div class="sc-text">
+            <span class="sc-name">Twitter / X</span>
+            <span class="sc-handle">Follow for insights &amp; updates</span>
+          </div>
+          <span class="sc-arrow">↗</span>
+        </a>
+
+        <a href="tel:+256742955780" class="social-card sc-call">
+          <div class="sc-icon-wrap">
+            <svg class="sc-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <div class="sc-text">
+            <span class="sc-name">Call Us Now</span>
+            <span class="sc-handle">+256 742 955780</span>
+          </div>
+          <span class="sc-arrow">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAP ─── -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-inner" data-reveal>
+        <div class="map-text">
+          <h3>Visit Our Office</h3>
+          <p>Kumi Road, Mbale, Uganda</p>
+          <a href="https://maps.app.goo.gl/SsUmrmgKz6fBuNRC7" target="_blank" rel="noopener" class="btn btn-outline">
+            <span>Get Directions</span>
+            <span class="btn-icon">📍</span>
+          </a>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7!2d34.1792!3d1.0773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1778b74b9ac8c91f%3A0x663875a75cf057e8!2sIDEAL%20BRANDY%2C%20Kumi%20Rd%2C%20Mbale!5e0!3m2!1sen!2sug!4v1"
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Ideal Brandy Office Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Ideal Brandy" class="footer-logo-img"/>
+          </div>
+          <p class="footer-tagline">Empowering Businesses. Delivering Excellence.</p>
+          <p class="footer-address">📍 Kumi Road, Mbale, Uganda</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#media">Media Gallery</a></li>
+            <li><a href="#booking">Book Consultation</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Get In Touch</h4>
+          <p><a href="tel:+256742955780">+256 742 955780</a></p>
+          <p><a href="https://idealbrandy.co" target="_blank">idealbrandy.co</a></p>
+          <div class="footer-socials">
+            <a href="https://wa.me/256742955780" target="_blank" rel="noopener" class="fs-btn fs-wa" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.132.558 4.13 1.535 5.858L.057 23.5l5.784-1.517A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.663-.493-5.195-1.357l-.372-.221-3.435.9.92-3.35-.243-.387A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/search/top?q=Ideal%20Brandy%20Mbale" target="_blank" rel="noopener" class="fs-btn fs-fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.532-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </a>
+            <a href="https://twitter.com/search?q=IdealBrandy" target="_blank" rel="noopener" class="fs-btn fs-tw" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Ideal Brandy Consultancy, Mbale, Uganda. All rights reserved.</p>
+        <p>Built by <a href="https://idealbrandy.co" target="_blank">Ideal Brandy Consults Ltd</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── WHATSAPP FLOAT ─── -->
+  <a href="https://wa.me/256742955780?text=Hello%20Ideal%20Brandy!%20I%27d%20like%20to%20book%20a%20free%20consultation."
+     target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.132.558 4.13 1.535 5.858L.057 23.5l5.784-1.517A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.663-.493-5.195-1.357l-.372-.221-3.435.9.92-3.35-.243-.387A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+    <span class="wa-float-tooltip">Free Consultation</span>
+  </a>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCRIPTS — all JavaScript lives here. Edit this section to
+       change interactions, animations, and form behaviour.
+  ═══════════════════════════════════════════════════════════ -->
+  <script>
+'use strict';
+
+const qs  = (sel, ctx = document) => ctx.querySelector(sel);
+const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+/* ── 1. PAGE LOADER ── */
+(function initLoader() {
+  const loader = qs('#loader');
+  if (!loader) return;
+  document.body.style.overflow = 'hidden';
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+      document.body.style.overflow = '';
+      triggerHeroReveal();
+    }, 2500);
+  });
+})();
+
+/* ── 2. CUSTOM CURSOR ── */
+(function initCursor() {
+  const cursor   = qs('#cursor');
+  const follower = qs('#cursorFollower');
+  if (!cursor || !follower) return;
+  let mx = 0, my = 0, fx = 0, fy = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+  (function animateFollower() {
+    fx += (mx - fx) * 0.12;
+    fy += (my - fy) * 0.12;
+    follower.style.left = fx + 'px';
+    follower.style.top  = fy + 'px';
+    requestAnimationFrame(animateFollower);
+  })();
+  qsa('a, button, .menu-card, .media-item, .social-card, .partner-slot, .blog-card, input, textarea, select').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hovered'); follower.classList.add('hovered'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovered'); follower.classList.remove('hovered'); });
+  });
+  document.addEventListener('touchstart', () => {
+    cursor.style.display = follower.style.display = 'none';
+  }, { once: true });
+})();
+
+/* ── 3. NAV SCROLL ── */
+(function initNav() {
+  const nav = qs('#nav');
+  if (!nav) return;
+  const fn = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', fn, { passive: true });
+  fn();
+})();
+
+/* ── 4. MOBILE MENU ── */
+(function initMobileMenu() {
+  const hamburger = qs('#hamburger');
+  const navLinks  = qs('#navLinks');
+  if (!hamburger || !navLinks) return;
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  qsa('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      hamburger.classList.remove('active');
+    });
+  });
+})();
+
+/* ── 5. SCROLL REVEAL ── */
+function initReveal() {
+  const els = qsa('[data-reveal]');
+  if (!els.length) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => observer.observe(el));
+}
+function triggerHeroReveal() {
+  qsa('#hero [data-reveal]').forEach((el, i) => {
+    setTimeout(() => el.classList.add('revealed'), i * 160 + 100);
+  });
+  initReveal();
+}
+
+/* ── 6. STAT COUNTERS ── */
+(function initCounters() {
+  const counters = qsa('[data-count]');
+  if (!counters.length) return;
+  let fired = false;
+  const section = qs('.about-stats');
+  if (!section) return;
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !fired) {
+        fired = true;
+        counters.forEach(el => {
+          const target = +el.dataset.count;
+          const start  = performance.now();
+          (function step(now) {
+            const p = Math.min((now - start) / 1800, 1);
+            el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString();
+          })(start);
+        });
+      }
+    });
+  }, { threshold: 0.4 }).observe(section);
+})();
+
+/* ── 7. BOOKING FORM → WhatsApp ── */
+(function initBookingForm() {
+  const form    = qs('#bookingForm');
+  const success = qs('#formSuccess');
+  const btn     = qs('#submitBtn');
+  if (!form) return;
+  const dateInput = qs('#date');
+  if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!validateForm(form)) return;
+    btn.disabled = true;
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-text">Sending…</span><span class="btn-icon" style="animation:spin 1s linear infinite">◌</span>';
+    await new Promise(r => setTimeout(r, 1600));
+    const data    = new FormData(form);
+    const name    = data.get('fname')    || 'Not provided';
+    const phone   = data.get('phone')   || 'Not provided';
+    const email   = data.get('email')   || 'Not provided';
+    const company = data.get('company') || 'Not provided';
+    const service = data.get('service') || 'Not specified';
+    const date    = data.get('date')    || 'Not specified';
+    const notes   = data.get('notes')   || 'None';
+    const msg = encodeURIComponent(
+      `💼 *Consultation Request – Ideal Brandy*\n\n` +
+      `👤 Name: ${name}\n📞 Phone: ${phone}\n📧 Email: ${email}\n` +
+      `🏢 Business: ${company}\n🎯 Service: ${service}\n📅 Date: ${date}\n` +
+      `📝 Notes: ${notes}\n\nPlease confirm my consultation. Thank you!`
+    );
+    btn.innerHTML = orig;
+    btn.disabled  = false;
+    if (success) {
+      success.classList.add('show');
+      setTimeout(() => window.open(`https://wa.me/256742955780?text=${msg}`, '_blank'), 700);
+      setTimeout(() => success.classList.remove('show'), 8000);
+    }
+    form.reset();
+  });
+
+  function validateForm(f) {
+    let valid = true;
+    qsa('[required]', f).forEach(input => {
+      const group = input.closest('.form-group');
+      if (!input.value.trim()) {
+        valid = false;
+        if (group) { group.style.animation = 'none'; group.offsetHeight; group.style.animation = 'shake 0.4s ease'; }
+        input.style.borderColor = '#e05252';
+        input.addEventListener('input', () => { input.style.borderColor = ''; }, { once: true });
+      }
+    });
+    return valid;
+  }
+})();
+
+/* ── 8. SMOOTH SCROLL ── */
+(function initSmoothScroll() {
+  qsa('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = qs(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ── 9. PARALLAX HERO ORBS ── */
+(function initParallax() {
+  const orbs = qsa('.hero-orb');
+  if (!orbs.length) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        orbs[0] && (orbs[0].style.transform = `translate(${y * 0.03}px, ${-y * 0.05}px)`);
+        orbs[1] && (orbs[1].style.transform = `translate(${-y * 0.02}px, ${y * 0.04}px)`);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+/* ── 10. CARD TILT ── */
+(function initCardTilt() {
+  qsa('.menu-card, .social-card, .partner-slot, .blog-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r  = card.getBoundingClientRect();
+      const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
+      const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+      card.style.transform = `translateY(-6px) perspective(700px) rotateY(${dx * 3}deg) rotateX(${-dy * 3}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+    });
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.1s, border-color 0.35s, box-shadow 0.35s';
+    });
+  });
+})();
+
+/* ── 11. MEDIA FILTER ── */
+(function initMediaFilter() {
+  const tabs  = qsa('.media-tab');
+  const items = qsa('.media-item');
+  if (!tabs.length || !items.length) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      items.forEach(item => {
+        const show = filter === 'all' || item.dataset.category === filter;
+        item.classList.toggle('hidden', !show);
+        if (show) item.style.animation = 'fadeIn 0.4s ease forwards';
+      });
+    });
+  });
+})();
+
+/* ── 12. ACTIVE NAV ON SCROLL ── */
+(function initActiveNav() {
+  const sections = qsa('section[id]');
+  const links    = qsa('.nav-link');
+  if (!sections.length || !links.length) return;
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach(l => l.style.color = l.getAttribute('href') === `#${id}` ? 'var(--gold)' : '');
+      }
+    });
+  }, { threshold: 0.4 }).observe(sections[0]) && sections.forEach(s => {
+    new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.style.color = l.getAttribute('href') === `#${entry.target.id}` ? 'var(--gold)' : '');
+        }
+      });
+    }, { threshold: 0.35 }).observe(s);
+  });
+})();
+
+/* ── 13. FORM LABEL FOCUS ── */
+(function initInputEffects() {
+  qsa('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+    input.addEventListener('focus', () => {
+      const label = input.previousElementSibling;
+      if (label?.tagName === 'LABEL') label.style.color = 'var(--gold-lt)';
+    });
+    input.addEventListener('blur', () => {
+      const label = input.previousElementSibling;
+      if (label?.tagName === 'LABEL') label.style.color = '';
+    });
+  });
+})();
+
+/* ── 14. FOOTER YEAR ── */
+(function() { const el = qs('#year'); if (el) el.textContent = new Date().getFullYear(); })();
+
+/* ── 15. WHATSAPP FLOAT ENTRANCE ── */
+(function initWaFloat() {
+  const wa = qs('#waFloat');
+  if (!wa) return;
+  wa.style.cssText = 'opacity:0; transform:scale(0) translateY(20px); transition:opacity 0.5s,transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+  setTimeout(() => { wa.style.opacity = '1'; wa.style.transform = 'scale(1) translateY(0)'; }, 3400);
+})();
+
+console.log('%c✦ Ideal Brandy Website Loaded', 'color:#c9a85c;font-size:13px;font-weight:bold;');
+  </script>
+</body>
+</html>
